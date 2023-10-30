@@ -1,4 +1,4 @@
-package br.com.fiap.p4.p4;
+package br.com.fiap.p4.p4.controller.exception;
 
 import java.time.Instant;
 
@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 public class ControllerExceptionHandler {
     private StandardError err = new StandardError();
 
-    @ExceptionHandler(ControllerNotFoundException.class)    
+    @ExceptionHandler(ControllerNotFoundException.class)
     public ResponseEntity<StandardError> entityNotFound(
         ControllerNotFoundException e, 
         HttpServletRequest resquest) {

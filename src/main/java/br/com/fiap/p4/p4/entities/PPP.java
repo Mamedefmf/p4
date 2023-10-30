@@ -1,8 +1,9 @@
-package br.com.fiap.p4.p4;
+package br.com.fiap.p4.p4.entities;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

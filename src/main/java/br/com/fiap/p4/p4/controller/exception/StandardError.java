@@ -1,4 +1,4 @@
-package br.com.fiap.p4.p4;
+package br.com.fiap.p4.p4.controller.exception;
 
 import java.time.Instant;
 

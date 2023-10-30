@@ -1,8 +1,10 @@
-package br.com.fiap.p4.p4;
+package br.com.fiap.p4.p4.controller;
 
 import java.util.Optional;
 import java.util.UUID;
 
+import br.com.fiap.p4.p4.entities.PPP;
+import br.com.fiap.p4.p4.service.PPPService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
