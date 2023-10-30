@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PPPRepository extends JpaRepository<PPP, UUID> {
+public interface PPPRepository extends JpaRepository<PPP, UUID> {    
 }

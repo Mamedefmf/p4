@@ -1,29 +1,37 @@
 package br.com.fiap.p4.p4;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import java.util.Date;
 
-///Entidade
-///PPP=Pesquisa de Preço Padrão
+
+//Entidade Pesquisa de Preço Padrão - PPP
 @Entity
-@Table(name = "tb_ppp")
+@Table(name = "tb_PPP")
 public class PPP {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-    private String descricao;
-    private String responsavel;
-    private Date dataCriacao;
-    @PrePersist
+    private UUID id;//Atributo de chave ID automático
+    private String descricao;//Atributo descrição da PPP
+    private String responsavel;//Atributo nome do responsável da PPP
+    private Date dataCriacao; //Atributo para colocar data automatica
+    @PrePersist 
     protected void onCreate() {
         this.dataCriacao = new Date();
     }
+    @ElementCollection //Atributo para receber os itens
+    private List<ItemPesquisa> itensPesquisa = new ArrayList<>();
+
+    //Getters, Setters, Construtores
     public UUID getId() {
         return id;
     }
@@ -39,14 +47,20 @@ public class PPP {
     public String getResponsavel() {
         return responsavel;
     }
-    public void setResponsavel(String responsavel) {
-        this.responsavel = responsavel;
-    }
     public Date getDataCriacao() {
         return dataCriacao;
     }
     public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+    public void setResponsavel(String responsavel) {
+        this.responsavel = responsavel;
+    }
+    public List<ItemPesquisa> getItensPesquisa() {
+        return itensPesquisa;
+    }
+    public void setItensPesquisa(List<ItemPesquisa> itensPesquisa) {
+        this.itensPesquisa = itensPesquisa;
     }
     @Override
     public int hashCode() {
@@ -55,7 +69,7 @@ public class PPP {
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
         result = prime * result + ((responsavel == null) ? 0 : responsavel.hashCode());
-        result = prime * result + ((dataCriacao == null) ? 0 : dataCriacao.hashCode());
+        result = prime * result + ((itensPesquisa == null) ? 0 : itensPesquisa.hashCode());
         return result;
     }
     @Override
@@ -82,16 +96,16 @@ public class PPP {
                 return false;
         } else if (!responsavel.equals(other.responsavel))
             return false;
-        if (dataCriacao == null) {
-            if (other.dataCriacao != null)
+        if (itensPesquisa == null) {
+            if (other.itensPesquisa != null)
                 return false;
-        } else if (!dataCriacao.equals(other.dataCriacao))
+        } else if (!itensPesquisa.equals(other.itensPesquisa))
             return false;
         return true;
     }
     @Override
     public String toString() {
-        return "PPP [id=" + id + ", descricao=" + descricao + ", responsavel=" + responsavel + ", dataCriacao="
-                + dataCriacao + "]";
+        return "PPP [id=" + id + ", descricao=" + descricao + ", responsavel=" + responsavel + ", itensPesquisa="
+                + itensPesquisa + "]";
     }
 }

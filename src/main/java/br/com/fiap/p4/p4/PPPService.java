@@ -1,10 +1,11 @@
 package br.com.fiap.p4.p4;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class PPPService {
@@ -14,31 +15,27 @@ public class PPPService {
 
     public Collection<PPP> findAll() {
         var ppp = repo.findAll();
+        return ppp; 
+    }
+
+    public Optional<PPP> findById(UUID id){
+        var ppp = repo.findById(id);
         return ppp;
     }
 
-    public PPP findById(UUID id){
-        var ppp = repo.findById(id).orElseThrow(() -> new ControllerNotFoundException("Produto não encontrado"));
-        return ppp;
-    }
-
-    public PPP save(PPP ppp) {
+    public PPP save(PPP ppp){
         ppp = repo.save(ppp);
         return ppp;
     }
 
     public PPP update(UUID id, PPP ppp) {
-
-        try{
-             PPP buscaPPP = repo.getReferenceById(id);
-        buscaPPP.setDataCriacao(ppp.getDataCriacao());
+        PPP buscaPPP = repo.getReferenceById(id);
         buscaPPP.setDescricao(ppp.getDescricao());
         buscaPPP.setResponsavel(ppp.getResponsavel());
+        buscaPPP.setDataCriacao(ppp.getDataCriacao());
+        buscaPPP.setItensPesquisa(ppp.getItensPesquisa());
         buscaPPP = repo.save(buscaPPP);
-        return buscaPPP; 
-        } catch(EntityNotFoundException e) {
-            throw new ControllerNotFoundException("Produto não encontrado");
-        }
+        return buscaPPP;
     }
 
     public void delete(UUID id){
