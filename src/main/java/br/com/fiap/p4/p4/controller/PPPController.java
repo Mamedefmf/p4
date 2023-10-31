@@ -40,7 +40,7 @@ public class PPPController {
     @PostMapping
     public ResponseEntity<PPPDto> save(@RequestBody PPPDto pppDto){
         pppDto = service.save(pppDto);
-        return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(ppp);
+        return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(pppDto);
     }
 
     @PutMapping("/{id}")
