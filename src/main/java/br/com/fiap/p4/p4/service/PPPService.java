@@ -38,14 +38,14 @@ public class PPPService {
     public PPPDto update(UUID id, PPPDto pppDto) {
 
         try{
-            PPP buscaPPP = repo.getReferenceById(id);
-            buscaPPP.setDescricao(pppDto.descricao());
-            buscaPPP.setResponsavel(pppDto.responsavel());
-            buscaPPP.setDataCriacao(pppDto.dataCriacao());
-            buscaPPP.setItensPesquisa(pppDto.itensPesquisa());
-            buscaPPP = repo.save(buscaPPP);
+            PPP ppp = repo.findById(id).orElseThrow(() -> new ControllerNotFoundException("PPP não encontrada"));
+            ppp.setDescricao(pppDto.descricao());
+            ppp.setResponsavel(pppDto.responsavel());
+            ppp.setDataCriacao(pppDto.dataCriacao());
+            ppp.setItensPesquisa(pppDto.itensPesquisa());
+            ppp = repo.save(ppp);
 
-            return toPPPdto(buscaPPP);
+            return toPPPdto(ppp);
         } catch (EntityNotFoundException e) {
             throw new ControllerNotFoundException("PPP não encontrada");
         }
