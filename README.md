@@ -34,17 +34,17 @@ Um request POST para http://localhost:8080/ppp com um JSON no formato do exemplo
 
 
 ## Alterar uma Pesquisa de Preço Padrão
-Um request PUT para http://localhost:8080/ppp/<ID> com um JSON no formato do exemplo acima, atualiza a pesquisa de preço padrão do ID colocado na url.
+Um request PUT para http://localhost:8080/ppp/+"ID" com um JSON no formato do exemplo acima, atualiza a pesquisa de preço padrão do ID colocado na url.
 
 
 ## Consultar todas as pesquisas salvas
 Um request GET para http://localhost:8080/ppp retorna todas as pesquisas cadastradas e seus atributos.
 
 ## Consultar pesquisa por ID
-Um request GET para http://localhost:8080/ppp/<ID> consulta apenas os atributos do ID fornecido na url.
+Um request GET para http://localhost:8080/ppp/+"ID" consulta apenas os atributos do ID fornecido na url.
 
 ## Deletar uma pesquisa
-Um request DELETE para http://localhost:8080/ppp/<ID> deleta o objeto com o ID fornecido na url.
+Um request DELETE para http://localhost:8080/ppp/+"ID" deleta o objeto com o ID fornecido na url.
 
 
 
