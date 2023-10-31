@@ -3,6 +3,7 @@ package br.com.fiap.p4.p4.controller;
 import java.util.Optional;
 import java.util.UUID;
 
+import br.com.fiap.p4.p4.dto.PPPDto;
 import br.com.fiap.p4.p4.entities.PPP;
 import br.com.fiap.p4.p4.service.PPPService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,27 +26,27 @@ public class PPPController {
     private PPPService service;
 
     @GetMapping
-    public ResponseEntity<java.util.Collection<PPP>> findAll(){
+    public ResponseEntity<java.util.Collection<PPPDto>> findAll(){
         var ppp = service.findAll();
         return ResponseEntity.ok(ppp);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<PPP>> findById(@PathVariable UUID id){
+    public ResponseEntity<PPPDto> findById(@PathVariable UUID id){
         var ppp = service.findById(id);
         return ResponseEntity.ok(ppp);
     }
 
     @PostMapping
-    public ResponseEntity<PPP> save(@RequestBody PPP ppp){
-        ppp = service.save(ppp);
+    public ResponseEntity<PPPDto> save(@RequestBody PPPDto pppDto){
+        pppDto = service.save(pppDto);
         return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(ppp);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PPP> update(@PathVariable UUID id, @RequestBody PPP ppp) {
-        ppp = service.update(id, ppp);
-        return ResponseEntity.ok(ppp);
+    public ResponseEntity<PPPDto> update(@PathVariable UUID id, @RequestBody PPPDto pppDto) {
+        pppDto = service.update(id, pppDto);
+        return ResponseEntity.ok(pppDto);
     }
 
     @DeleteMapping("/{id}")

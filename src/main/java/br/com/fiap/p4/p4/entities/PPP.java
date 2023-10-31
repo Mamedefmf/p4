@@ -25,7 +25,12 @@ public class PPP {
     private String descricao;//Atributo descrição da PPP
     private String responsavel;//Atributo nome do responsável da PPP
     private Date dataCriacao; //Atributo para colocar data automatica
-    @PrePersist 
+
+    ///Construtor feito pela IDE
+    public PPP(UUID id, String descricao, String responsavel, Date date, List<ItemPesquisa> itemPesquisas) {
+    }
+
+    @PrePersist
     protected void onCreate() {
         this.dataCriacao = new Date();
     }
